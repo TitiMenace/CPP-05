@@ -5,4 +5,5 @@
 int	main()
 {
 
+	Bureaucrat	Bureaucrat("Bob", 2);
 }

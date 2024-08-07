@@ -29,7 +29,7 @@ class	Bureaucrat{
 		
 		Bureaucrat(void);
 		~Bureaucrat(void);
-		Bureaucrat(std::string name, int grade)
+		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &type);
 		Bureaucrat &operator=(const Bureaucrat &type);
 

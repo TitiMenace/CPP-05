@@ -3,7 +3,7 @@
 
 Bureaucrat::Bureaucrat(void) : _name("no_name"), _grade(1)
 {
-	std::cout << "Default constructor called" << std:endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat(void){
@@ -22,7 +22,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat type){
+Bureaucrat::Bureaucrat(const Bureaucrat &type){
 	
 	*this = type
 }
@@ -36,7 +36,7 @@ Bureaucrat	&Bureaucrat::operaror=(const Bureaucrat &type){
 
 std::string	Bureaucrat::getName(void) const{
 
-	return (this->_name)
+	return (this->_name);
 }
 
 int		Bureaucrat::getGrade(void) const{
@@ -62,7 +62,7 @@ void		Bureaucrat::setGrade(int grade){
 
 void		Bureaucrat::incrGrade(void){
 
-	if (grade + 1 > 150)
+	if (this->_grade + 1 > 150)
 		throw GradeTooHighException();
 	else 
 		this->_grade++;
@@ -70,7 +70,7 @@ void		Bureaucrat::incrGrade(void){
 
 void		Bureaucrat::decrGrade(void){
 
-	if (grade - 1 < 1)
+	if (this->_grade - 1 < 1)
 		throw GradeTooLowException();
 	else 
 		this->_grade--;
