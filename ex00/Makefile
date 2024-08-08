@@ -1,13 +1,13 @@
 
 NAME 		= bureaucrat
 
-CXX			= c++
+CXX		= c++
 
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 INCLUDES	=  Bureaucrat.hpp
 
-FILES		= Bureaucrat main
+FILES		= main Bureaucrat
 
 SRCS		= $(addsuffix .cpp, $(FILES))
 

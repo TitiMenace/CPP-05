@@ -19,19 +19,24 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 		throw GradeTooHighException();
 	else 
 		this->_grade = grade;
-
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &type){
 	
-	*this = type
+	*this = type;
 }
 
 
-Bureaucrat	&Bureaucrat::operaror=(const Bureaucrat &type){
+Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &type){
 
 	this->_grade = type._grade;
 	return (*this);
+}
+
+std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &bureaucrat){
+	
+	stream << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+	return stream;
 }
 
 std::string	Bureaucrat::getName(void) const{
@@ -44,11 +49,12 @@ int		Bureaucrat::getGrade(void) const{
 	return this->_grade;
 }
 
-
+/*
 void		Bureaucrat::setName(std::string name){
 
 	this->_name = name;
 }
+*/
 
 void		Bureaucrat::setGrade(int grade){
 
@@ -75,3 +81,5 @@ void		Bureaucrat::decrGrade(void){
 	else 
 		this->_grade--;
 }
+
+

@@ -14,7 +14,7 @@ class	Bureaucrat{
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: GradeTooHigh: Grade is in between 1 and 150 included");
+					return("Error: GradeTooHigh: Grade is in between 1 and 150 included !");
 				}
 		};
 
@@ -23,7 +23,7 @@ class	Bureaucrat{
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: GradeTooLow: Grade is in between 1 and 150 included");
+					return("Error: GradeTooLow: Grade is in between 1 and 150 included !");
 				}
 		};
 		
@@ -36,7 +36,7 @@ class	Bureaucrat{
 		std::string 	getName(void) const;
 		int		getGrade(void) const;
 
-		void		setName(std::string name);
+	//	void		setName(std::string name);
 		void		setGrade(int grade);
 
 		void		incrGrade(void);
@@ -48,3 +48,5 @@ class	Bureaucrat{
 		const std::string	_name;
 		int			_grade;
 };
+
+std::ostream &operator<<(std::ostream &stream, const Bureaucrat &bureaucrat);
