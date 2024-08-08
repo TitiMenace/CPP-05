@@ -1,5 +1,6 @@
 
 #include "Form.hpp"
+#include "Bureaucrat.cpp"
 
 
 Form::Form(void) : _name("no_name"), _is_signed(false), _grade_to_sign(1), _grade_to_exec(1);
@@ -36,7 +37,12 @@ Form	&Form::operator=(const Form &type){
 
 std::ostream	&operator<<(std::ostream &stream, const Form &form){
 	
-	stream << form.getName() << " form " << form.getIsSigned() << " : grade to sign = " << form.getGradeToSign() << " grade to exec = " << form.getGradeToExec();
+	stream << form.getName() << " form ";
+	if (form.getIsSigned())
+		stream << "is signed";
+	else
+		stream << "is not signed";
+	stream << " : grade to sign = " << form.getGradeToSign() << " grade to exec = " << form.getGradeToExec();
 	return stream;
 }
 
@@ -45,9 +51,14 @@ std::string	Form::getName(void) const{
 	return (this->_name);
 }
 
-int		Form::getGrade(void) const{
+int		Form::getGradeToSign(void) const{
 
-	return this->_grade;
+	return this->_grade_to_sign;
+}
+
+int		Form::getGradeToExec(void) const{
+
+	return this->_grade_to_exec;
 }
 
 bool		Form::getIsSigned(void) const{
@@ -73,5 +84,8 @@ void		Form::setGrade(int grade){
 
 void		Form::beSigned(Bureaucrat &bureaucrat){
 	
+	if (bureaucrat.getGrade > this->getGradeToSign)
+		throw GradeTooLowException();
+	this->_is_signed = true;
 
 }
