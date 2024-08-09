@@ -1,13 +1,13 @@
 
-NAME 		= bureaucrat
+NAME 		= form
 
 CXX		= c++
 
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-INCLUDES	=  Bureaucrat.hpp
+INCLUDES	=  Bureaucrat.hpp Form.hpp
 
-FILES		= main Bureaucrat
+FILES		= main Bureaucrat Form
 
 SRCS		= $(addsuffix .cpp, $(FILES))
 

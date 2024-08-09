@@ -1,19 +1,16 @@
 
 #include "Form.hpp"
-#include "Bureaucrat.cpp"
+#include "Bureaucrat.hpp"
 
 
-Form::Form(void) : _name("no_name"), _is_signed(false), _grade_to_sign(1), _grade_to_exec(1);
+Form::Form(void) : _name("no_name"), _is_signed(false), _grade_to_sign(1), _grade_to_exec(2)
 {
-	std::cout << "Form default constructor called" << std::endl;
+//	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::~Form(void){
 
-	std::cout << "Form default destructor called" << std::endl;
-}
 
-Form::Form(std::string name, int grade_to_sign, int grade_to_exec) : _name(name), _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec), _is_signed(false){
+Form::Form(std::string name, const int grade_to_sign, const int grade_to_exec) : _name(name), _is_signed(false), _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec){
 
 	if (grade_to_sign < 1 || grade_to_exec < 1)
 		throw GradeTooHighException();
@@ -21,28 +18,32 @@ Form::Form(std::string name, int grade_to_sign, int grade_to_exec) : _name(name)
 		throw GradeTooLowException();
 }
 
-Form::Form(const Form &type){
+Form::Form(Form &type) : _name(type._name), _grade_to_sign(type._grade_to_sign), _grade_to_exec(type._grade_to_exec){
 	
 	*this = type;
 }
 
+Form::~Form(void){
+
+//	std::cout << "Form default destructor called" << std::endl;
+}
 
 Form	&Form::operator=(const Form &type){
 
-	this->_grade_to_sign = type.getGradeToSign();
-	this->_grade_to_exec = type.getGradeToExec();
+//	this->_grade_to_sign = type.getGradeToSign();
+//	this->_grade_to_exec = type.getGradeToExec();
 	this->_is_signed = type.getIsSigned();
 	return (*this);
 }
 
 std::ostream	&operator<<(std::ostream &stream, const Form &form){
 	
-	stream << form.getName() << " form ";
+	stream << form.getName();
 	if (form.getIsSigned())
-		stream << "is signed";
+		stream << " is signed";
 	else
-		stream << "is not signed";
-	stream << " : grade to sign = " << form.getGradeToSign() << " grade to exec = " << form.getGradeToExec();
+		stream << " is not signed";
+	stream << ": grade to sign = " << form.getGradeToSign() << " grade to exec = " << form.getGradeToExec();
 	return stream;
 }
 
@@ -84,8 +85,8 @@ void		Form::setGrade(int grade){
 
 void		Form::beSigned(Bureaucrat &bureaucrat){
 	
-	if (bureaucrat.getGrade > this->getGradeToSign)
+	if (bureaucrat.getGrade() > this->getGradeToSign())
 		throw GradeTooLowException();
-	this->_is_signed = true;
-
+	else
+		this->_is_signed = true;
 }

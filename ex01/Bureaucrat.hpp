@@ -4,6 +4,7 @@
 #include <iostream>
 #include <exception>
 
+class Form;
 
 class	Bureaucrat{
 		
@@ -14,7 +15,7 @@ class	Bureaucrat{
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: GradeTooHigh: Grade is in between 1 and 150 included !");
+					return("Error: Bureaucrat: GradeTooHigh: Grade is in between 1 and 150 included !");
 				}
 		};
 
@@ -23,7 +24,7 @@ class	Bureaucrat{
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: GradeTooLow: Grade is in between 1 and 150 included !");
+					return("Error: Bureaucrat: GradeTooLow: Grade is in between 1 and 150 included !");
 				}
 		};
 		

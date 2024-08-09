@@ -1,14 +1,15 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 
 Bureaucrat::Bureaucrat(void) : _name("no_name"), _grade(1)
 {
-	std::cout << "Default constructor called" << std::endl;
+//	std::cout << "Default constructor called" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat(void){
 
-	std::cout << "Default destructor called" << std::endl;
+//	std::cout << "Default destructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
@@ -35,7 +36,7 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &type){
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &bureaucrat){
 	
-	stream << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+	stream << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return stream;
 }
 
@@ -86,18 +87,14 @@ void		Bureaucrat::signForm(Form &form){
 
 	try{	
 		if (form.getIsSigned())
-			std::cout << *this << " couldn't sign " << form.getName << " form beaucause it is already signed !" << std::endl;
+			std::cout << *this << " couldn't sign " << form.getName() << " beaucause it is already signed !" << std::endl;
 		else{
 			form.beSigned(*this);
-			std::cout << *this << " signed" << form.getName << " form" << std::endl;
+			std::cout << *this << " signed " << form.getName() << std::endl;
 		}
 	} catch(std::exception &e){
 		
-		std::cout << *this << " couldn't sign " << form.getName << " form beaucause " << e.what() << std::endl;
+		std::cout << *this << " couldn't sign " << form.getName() << " beaucause his grade is too low" << std::endl;
 	}
 }
 
-
-
-
-}
