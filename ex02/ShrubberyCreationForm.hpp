@@ -2,9 +2,11 @@
 
 #pragma once
 
+#include "AForm.hpp"
 #include <string>
 #include <iostream>
 #include <exception>
+#include <fstream>
 
 
 class Bureaucrat;
@@ -13,7 +15,7 @@ class	ShrubberyCreationForm : public AForm{
 		
 	private:
 
-		const std::string	_target;
+		std::string	_target;
 		void	beExecuted(void);
 
 
@@ -24,7 +26,7 @@ class	ShrubberyCreationForm : public AForm{
 		ShrubberyCreationForm(ShrubberyCreationForm &type);
 		~ShrubberyCreationForm(void);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &type);
-
+		std::string	getTarget(void);
 	};
 
 std::ostream &operator<<(std::ostream &stream, const ShrubberyCreationForm &form);

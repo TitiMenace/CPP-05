@@ -41,10 +41,10 @@ class	AForm{
 		AForm(void);
 		AForm(std::string name, const int gradeToSign, const int gradeToExec);
 		AForm(AForm &type);
-		~AForm(void);
+		virtual ~AForm(void) = 0;
 		AForm &operator=(const AForm &type);
 
-		virtual	std::string 	getName(void) const = 0;
+		std::string 	getName(void) const;
 		int		getGradeToSign(void) const;
 		int		getGradeToExec(void) const;
 		bool		getIsSigned(void) const;
