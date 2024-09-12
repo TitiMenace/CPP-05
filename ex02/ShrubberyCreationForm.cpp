@@ -1,20 +1,28 @@
 
-
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
-
-ShrubberyCreationForm::ShrubberyCreationForm(void) : _target("Unspecified")
+ShrubberyCreationForm::ShrubberyCreationForm(void): _target("Unspecified"), AForm("ShrubberyCreationForm", 145, 136)
 {
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 136){
 
 	this->_target = target;
 
-	std::ofstream	NewFile(target.c_str());
+}
 
+void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
+
+	std::string	string;
+	string = this->_target + " Shrubbery";
+	std::ofstream	NewFile;
+
+	NewFile.open(string.c_str());
+	if (!NewFile.is_open())
+		throw  FileNotOpenException();
+	
 	NewFile << "             .        +          .      .          .\n\
      .            _        .                    .\n\
   ,              /;-._,-.____        ,-----.__\n\
@@ -41,15 +49,18 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target){
           ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~\n\
 dew   ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~ " << std::endl;
 
-
 	NewFile.close();
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &type){
+
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &type) : AForm(type){
 	
 	*this = type;
 }
+
+
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void){
 

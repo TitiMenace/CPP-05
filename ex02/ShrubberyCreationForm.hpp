@@ -21,12 +21,19 @@ class	ShrubberyCreationForm : public AForm{
 
 	public:
 
+		class	FileNotOpenException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(ShrubberyCreationForm &type);
 		~ShrubberyCreationForm(void);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &type);
 		std::string	getTarget(void);
-	};
+		void	execute(Bureaucrat const &executor) const;
+
+			};
 
 std::ostream &operator<<(std::ostream &stream, const ShrubberyCreationForm &form);
