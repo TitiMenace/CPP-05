@@ -3,11 +3,11 @@ NAME 		= form
 
 CXX		= c++
 
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+CFLAGS		= -std=c++98
 
-INCLUDES	=  Bureaucrat.hpp AForm.hpp
+INCLUDES	=  Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp
 
-FILES		= main Bureaucrat AForm
+FILES		= main Bureaucrat AForm ShrubberyCreationForm PresidentialPardonForm RobotomyRequestForm
 
 SRCS		= $(addsuffix .cpp, $(FILES))
 

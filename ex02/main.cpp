@@ -1,18 +1,20 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.cpp"
+#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-#include <iostream>
-#include <fstream>
 
 int	main()
 
 {
 
-	ShrubberyCreationForm	zazou("zazi");
+	ShrubberyCreationForm	zazou("zazou");
+	PresidentialPardonForm	papou("papou");
+	RobotomyRequestForm		papah("papah");
+	Bureaucrat				Patrick("Patrick", 1);
 
-
-
+	Patrick.signForm(zazou);
+	std::cout << zazou;
+	Patrick.executeForm(zazou);
 }

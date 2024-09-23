@@ -90,3 +90,14 @@ void		AForm::beSigned(Bureaucrat &bureaucrat){
 	else
 		this->_is_signed = true;
 }
+
+void		AForm::execute(Bureaucrat const &executor){
+
+	if (this->_grade_to_exec < executor.getGrade())
+		throw AForm::GradeTooLowException();
+	else if (this->getIsSigned() == false)
+		throw AForm::FormIsNotSigned();
+	this->beExecuted();
+ 
+
+}

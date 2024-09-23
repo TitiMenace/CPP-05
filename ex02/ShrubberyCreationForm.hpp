@@ -34,8 +34,5 @@ class	ShrubberyCreationForm : public AForm{
 		~ShrubberyCreationForm(void);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &type);
 		std::string	getTarget(void);
-		void	execute(Bureaucrat const &executor) const;
+};
 
-			};
-
-std::ostream &operator<<(std::ostream &stream, const ShrubberyCreationForm &form);

@@ -1,22 +1,20 @@
 
 #include "ShrubberyCreationForm.hpp"
-#include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): _target("Unspecified"), AForm("ShrubberyCreationForm", 145, 136)
+ShrubberyCreationForm::ShrubberyCreationForm(void): _target("Unspecified"), AForm("ShrubberyCreationForm", 145, 137)
 {
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 136){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137){
 
 	this->_target = target;
-
 }
 
-void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
+void	ShrubberyCreationForm::beExecuted(void){
 
 	std::string	string;
-	string = this->_target + " Shrubbery";
+	string = this->_target + "Shrubbery";
 	std::ofstream	NewFile;
 
 	NewFile.open(string.c_str());

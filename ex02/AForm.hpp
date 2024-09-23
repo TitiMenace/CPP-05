@@ -17,6 +17,8 @@ class	AForm{
 		const	int		_grade_to_sign;
 		const	int		_grade_to_exec;
 
+		virtual void	beExecuted(void) = 0;
+
 
 	public:
 
@@ -25,7 +27,7 @@ class	AForm{
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: AForm: GradeTooHigh: Grade is in between 1 and 150 included !");
+					return("Error: Form: GradeTooHigh: Grade is in between 1 and 150 included !");
 				}
 		};
 
@@ -34,8 +36,17 @@ class	AForm{
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: AForm: GradeTooLow: Grade is in between 1 and 150 included !");
+					return("Error: Form: GradeTooLow: Grade is in between 1 and 150 included !");
 				}
+		};
+		
+		class	FormIsNotSigned : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return("Error: Form: FormIsNotSigned: Can't execute form because it is not signed !");
+				}		
 		};
 		
 		AForm(void);
@@ -48,6 +59,7 @@ class	AForm{
 		int		getGradeToSign(void) const;
 		int		getGradeToExec(void) const;
 		bool		getIsSigned(void) const;
+		void	execute(Bureaucrat const &executor);
 
 		void		beSigned(Bureaucrat &bureaucrat);
 

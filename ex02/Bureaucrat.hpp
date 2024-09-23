@@ -43,6 +43,7 @@ class	Bureaucrat{
 		void		incrGrade(void);
 		void		decrGrade(void);
 		void		signForm(AForm &form);
+		void		executeForm(AForm &form);
 
 
 	private:

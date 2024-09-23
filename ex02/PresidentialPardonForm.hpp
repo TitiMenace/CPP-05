@@ -1,61 +1,32 @@
 
 
+
 #pragma once
 
+#include "AForm.hpp"
 #include <string>
 #include <iostream>
 #include <exception>
+#include <fstream>
 
 
 class Bureaucrat;
 
-class	PresidentialPardonForm{
+class	PresidentialPardonForm : public AForm{
 		
 	private:
 
-		const std::string	_name;
-		bool			_is_signed;
-		const	int		_grade_to_sign;
-		const	int		_grade_to_exec;
+		std::string	_target;
+		void	beExecuted(void);
 
 
 	public:
 
-		class	GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw()
-				{
-					return("Error: PresidentialPardonForm: GradeTooHigh: Grade is in between 1 and 150 included !");
-				}
-		};
-
-		class	GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw()
-				{
-					return("Error: PresidentialPardonForm: GradeTooLow: Grade is in between 1 and 150 included !");
-				}
-		};
-		
 		PresidentialPardonForm(void);
-		PresidentialPardonForm(std::string name, const int gradeToSign, const int gradeToExec);
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(PresidentialPardonForm &type);
 		~PresidentialPardonForm(void);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &type);
+		std::string	getTarget(void);
+};
 
-		virtual	std::string 	getName(void) const;
-		int		getGradeToSign(void) const;
-		int		getGradeToExec(void) const;
-		bool		getIsSigned(void) const;
-
-		void		beSigned(Bureaucrat &bureaucrat);
-
-
-	//	void		setName(std::string name);
-	//	void		setGrade(int grade);
-
-	};
-
-std::ostream &operator<<(std::ostream &stream, const PresidentialPardonForm &form);
