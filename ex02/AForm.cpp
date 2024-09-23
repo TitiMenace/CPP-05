@@ -43,7 +43,7 @@ std::ostream	&operator<<(std::ostream &stream, const AForm &form){
 		stream << " is signed";
 	else
 		stream << " is not signed";
-	stream << ": grade to sign = " << form.getGradeToSign() << " grade to exec = " << form.getGradeToExec();
+	stream << ": grade to sign = " << form.getGradeToSign() << " grade to exec = " << form.getGradeToExec() << std::endl;
 	return stream;
 }
 

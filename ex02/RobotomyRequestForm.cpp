@@ -16,6 +16,7 @@ void	RobotomyRequestForm::beExecuted(void){
 
 	std::cout << "Bzzz BZzz *Making some drilling noise*" << std::endl;
 
+	srand(time(0));
 	if (!(rand() % 2))
 		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
 	else

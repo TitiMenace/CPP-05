@@ -14,7 +14,28 @@ int	main()
 	RobotomyRequestForm		papah("papah");
 	Bureaucrat				Patrick("Patrick", 1);
 
-	Patrick.signForm(zazou);
-	std::cout << zazou;
-	Patrick.executeForm(zazou);
+	try{
+			Patrick.signForm(zazou);
+			std::cout << zazou;
+			Patrick.executeForm(zazou);
+	}
+	catch(std::exception &e){
+			std::cout <<  e.what() << std::endl;
+	}
+	try{
+			Patrick.signForm(papou);
+			std::cout << papou;
+			Patrick.executeForm(papou);
+	}
+	catch(std::exception &e){
+			std::cout <<  e.what() << std::endl;
+	}
+	try{
+			Patrick.signForm(papah);
+			std::cout << papah;
+			Patrick.executeForm(papah);
+	}
+	catch(std::exception &e){
+			std::cout <<  e.what() << std::endl;
+	}
 }
